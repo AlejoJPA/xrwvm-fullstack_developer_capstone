@@ -1,58 +1,65 @@
+<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="/static/style.css">
   <link rel="stylesheet" href="/static/bootstrap.min.css">
 </head>
-<div>
+<body>
+
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
     <div class="container-fluid">
       <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 navitems">
+          <li class="nav-item"><a class="nav-link nav_item" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav_item active" href="/about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link nav_item" href="/contact">Contact Us</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-        <h1>Contact Us</h1>
-        Your Best Dream!
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 50%;">
-        <img class="card-img-top" src="/static/CarLot.png" alt="Card image">
-        <div class="card-body">
-          <p class="card-text"> Contact our Cusomer Service</p>
-          <p>support@bestcars.com</p>
-          <p class="card-text"> Contact our National Advertising Team</p>
-          <p>NationalSales@bestcars.com</p>
-          <p class="card-text"> Contact our Public Relations Team</p>
-          <p>PR@bestcars.com</p>
-          <p class="card-text"> Contact the bestcars.com offices</p>
-          <p>123-123-5555</p> 
-          <p class="card-text"> Become a bestcars.com car dealer</p>
-          <p class="card-text"> Visit growwithbestcars.com</p>
 
-        </div>
-      </div>
+  <!-- Top centered image -->
+  <div class="card" style="width: 50%;margin: auto; margin-top:5%;">
+    <img src="/static/CarLot.png" alt="Car Lot Image">
+  </div>
 
-    </div>
-    </div>
-    </div>
+  <!-- Bottom row: left image + right contact info -->
+  <div class="row">
     
-</div>
+    <!-- Left: Image 2 -->
+    <div class="card" style="width: 25%;">
+      <img src="/static/CallCenter2.png" alt="Call Center">
+      <div class="card-body">
+        <p class="title">Call Us!</p>
+        <p class="details"><strong>+1 123-123-5555</strong></p>
+      </div>
+    </div>
 
+    <!-- Right: Contact Info -->
+    <div class="card" style="width: 25%;">
+      <div class="card-body details">
+        <p style="font-size: 14px;"><strong>Contact our Customer Service</strong></p>
+        <p style="font-size: 14px;">support@bestcars.com</p>
+
+        <p style="font-size: 14px;"><strong>Contact our National Advertising Team</strong></p>
+        <p style="font-size: 14px;">NationalSales@bestcars.com</p>
+
+        <p style="font-size: 14px;"><strong>Contact our Public Relations Team</strong></p>
+        <p style="font-size: 14px;">PR@bestcars.com</p>
+
+        <p style="font-size: 14px;"><strong>Contact the bestcars.com offices</strong></p>
+        <p style="font-size: 14px;">+1 123-123-5555</p>
+
+        <p style="font-size: 14px;"><strong>Become a bestcars.com car dealer</strong></p>
+        <p style="font-size: 14px;"><strong>Visit growwithbestcars.com</strong></p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
 </html>
