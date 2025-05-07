@@ -10,7 +10,7 @@ class CarMake(models.Model):
     description = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.Name
+        return self.name
 
 #Car Model model
 class CarModel(models.Model):
@@ -44,4 +44,4 @@ class CarModel(models.Model):
     created_at = models.DateTimeField(default=now)
 
     def __str__(self):
-        return f'Car name: {self.name} - Car type: {self.car_type} – Date: {self.year}'
+        return f'Car name: {self.name} - Car type: {self.car_type} – Release Date: {self.year}'
