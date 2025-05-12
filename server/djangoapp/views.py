@@ -9,10 +9,11 @@ from django.contrib import messages
 from datetime import datetime
 
 from django.http import JsonResponse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from .populate import initiate
 
 
@@ -20,7 +21,6 @@ from .populate import initiate
 logger = logging.getLogger(__name__)
 
 # Create your views here.
-
 # Create a `login_request` view to handle sign in request
 @csrf_exempt
 def login_user(request):
@@ -38,11 +38,17 @@ def login_user(request):
     return JsonResponse(data)
 
 # Create a `logout_request` view to handle sign out request
+#@require_POST
+@csrf_exempt
 def logout_request(request):
-    # ...
-    logout(request)
-    data = {"userName":""}
-    return JsonResponse(data)
+    if request.method in ["POST","GET"]:
+        print("LOGOUT REQUEST METHOD:", request.method)
+        print("User before logout:", request.user)
+        logout(request)
+        data = {"status": "Logged out", "userName":""}
+        return JsonResponse(data)
+        print("User after logout:", request.user)
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
 
 # Create a `registration` view to handle sign up request
