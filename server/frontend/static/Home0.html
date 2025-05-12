@@ -8,9 +8,12 @@
 
 const logout = async (e) => {
 //Include the code for logout here.
-let logout_url = window.location.origin+"/djangoapp/logout";
+ let logout_url = window.location.origin+"/djangoapp/logout";
+
+ try {
   const res = await fetch(logout_url, {
     method: "GET",
+    credentials: "include",
   });
 
   const json = await res.json();
@@ -24,6 +27,9 @@ let logout_url = window.location.origin+"/djangoapp/logout";
   else {
     alert("The user could not be logged out.")
   }
+} else {
+    alert("Logout failed: " + error);
+    }
 };
 
 let checkSession = ()=>{
@@ -32,7 +38,9 @@ let checkSession = ()=>{
   if (curr_user && curr_user !== "") {
     document.getElementById("loginlogout").innerHTML = 
     '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
+    ''
+    //'<a class="homepage_links" href="#" onclick="event.preventDefault(); logout();">Logout</a>'
+    
   } else {
     document.getElementById("loginlogout").innerHTML = 
     '<a class="homepage_links" href="/login">Login</a>'+
