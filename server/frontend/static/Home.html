@@ -6,6 +6,23 @@
   <link rel="stylesheet" href="static/bootstrap.min.css">
 <script>
 
+//Controlling the alert message
+let postAlertAction = null;
+
+function showCustomAlert(message, callback) {
+  document.getElementById("alertMessage").innerText = message;
+  document.getElementById("customAlert").style.display = "block";
+  postAlertAction = callback;
+}
+
+function onAlertOK() {
+  document.getElementById("customAlert").style.display = "none";
+  if (postAlertAction) {
+    postAlertAction();
+    postAlertAction = null;
+  }
+}
+
 const logout = async (e) => {
 //Include the code for logout here.
 let logout_url = window.location.origin+"/djangoapp/logout";
@@ -18,14 +35,17 @@ let logout_url = window.location.origin+"/djangoapp/logout";
     let username = sessionStorage.getItem('username');
     sessionStorage.removeItem('username');
     window.location.href = window.location.origin;
-    window.location.reload();
-    alert("Logging out "+username+"...")
-    setTimeout(() => {
-       window.location.href = "#";
-       }, 5000); // 5 seconds delay
+   // window.location.reload();
+
+    // Use custom alert and wait for OK
+    //alert("Logging out "+username+"...")
+    //window.location.href = "/";
+    showCustomAlert("Logging out " + username + "...", () => {
+        window.location.href = "/";
+      });
   }
   else {
-    alert("The user could not be logged out.")
+    showCustomAlert("The user could not be logged out.")
   }
 };
 
@@ -43,7 +63,10 @@ let checkSession = ()=>{
     '<a class="homepage_links"  href="/register">Register</a>'
   }
  }
+
+
 </script>
+
 </head>
 <body onload="checkSession()">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
@@ -80,5 +103,13 @@ let checkSession = ()=>{
   </div>
 </div>
 </div>
+
+<!-- Custom Alert Modal -->
+<div id="customAlert" style="display:none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%);
+  background-color: white; border: 2px solid #444; padding: 20px; z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border-radius: 8px; width: 300px; text-align: center;">
+  <p id="alertMessage" style="margin-bottom: 20px;"></p>
+  <button onclick="onAlertOK()" class="btn btn-primary">OK</button>
+</div>
+
 </body>
 </html>
