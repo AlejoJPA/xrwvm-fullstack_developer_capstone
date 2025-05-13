@@ -34,13 +34,14 @@ let logout_url = window.location.origin+"/djangoapp/logout";
   if (json) {
     let username = sessionStorage.getItem('username');
     sessionStorage.removeItem('username');
+    const currentUrl = window.location.href;
    //window.location.href = window.location.origin;
    // window.location.reload();
 
     // Use custom alert and wait for OK
     //alert("Logging out "+username+"...")
     //window.location.href = "/";
-    showCustomAlert("Logging out " + username + "...", () => {
+    showCustomAlert(`${currentUrl}\nLogging out `+ username + `...`, () => {
         window.location.href = "/";
       });
   }
@@ -106,7 +107,7 @@ let checkSession = ()=>{
 
 <!-- Custom Alert Modal -->
 <div id="customAlert" style="display:none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%);
-  background-color: black; color: white; border: 2px solid #444; padding: 20px; z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border-radius: 8px; width: 300px; text-align: center;">
+  background-color: black; color: white; border: 2px solid #444; padding: 20px; z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border-radius: 8px; width: 500px; text-align: center;">
   <p id="alertMessage" style="margin-bottom: 20px;"></p>
   <button onclick="onAlertOK()" class="btn btn-primary">OK</button>
 </div>
