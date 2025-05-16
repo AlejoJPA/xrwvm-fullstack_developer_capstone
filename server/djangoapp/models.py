@@ -7,7 +7,7 @@ class CarMake(models.Model):
 
     #car maker name an description
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=100)
+    description = models.TextField() #description = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -36,9 +36,12 @@ class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
 
     #car model name, type(car_type), release year(year)
-    name = models.CharField(max_length=30)    
-    car_type = models.CharField(max_length=10, choices=CAR_TYPES, default=SEDAN)
-    year = models.IntegerField(validators=[MinValueValidator(2015), MaxValueValidator(2023)])
+    name = models.CharField(max_length=100)    
+    car_type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
+    year = models.IntegerField(default=2023,
+        validators=[MinValueValidator(2015),
+                     MaxValueValidator(2023)
+        ])
 
     #Report creation date (created_at)
     created_at = models.DateTimeField(default=now)
