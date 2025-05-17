@@ -36,7 +36,7 @@ class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
 
     #car model name, type(car_type), release year(year)
-    name = models.CharField(max_length=100)    
+    name = models.CharField(max_length=100)
     car_type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
     year = models.IntegerField(default=2023,
         validators=[MinValueValidator(2015),
@@ -47,4 +47,5 @@ class CarModel(models.Model):
     created_at = models.DateTimeField(default=now)
 
     def __str__(self):
-        return f'Car name: {self.name} - Car type: {self.car_type} – Release Date: {self.year}'
+        #return f'Car name: {self.name} - Car type: {self.car_type} – Release Date: {self.year}'
+        return self.name
