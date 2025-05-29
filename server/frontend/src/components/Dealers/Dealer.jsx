@@ -74,9 +74,9 @@ return(
       <h1 style={{color:"grey"}}>{dealer.full_name}{postReview}</h1>
       <h4  style={{color:"grey"}}>{dealer['city']},{dealer['address']}, Zip - {dealer['zip']}, {dealer['state']} </h4>
       </div>
-      <div class="reviews_panel">
+      <div className="reviews_panel">
       {reviews.length === 0 && unreviewed === false ? (
-        <text>Loading Reviews....</text>
+        <p>Loading Reviews....</p>
       ):  unreviewed === true? <div>No reviews yet! </div> :
       reviews.map(review => (
         <div className='review_panel'>
